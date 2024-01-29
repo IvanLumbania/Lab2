@@ -16,7 +16,7 @@ namespace Lab2
         {
             List<Employee> listOfEmployees = new List<Employee>();
 
-            using (StreamReader readerFile = new StreamReader("C:\\Users\\ivanl\\source\\repos\\Lab2\\Lab2\\employees.txt"))
+            using (StreamReader readerFile = new StreamReader("employees.txt"))
             {
                 string readerLine;
 
@@ -93,7 +93,7 @@ namespace Lab2
             }
 
             double allAvgWeeklyPay = totalWeeklyPay / Employee.employeeCounter;
-            Console.WriteLine($"The average weekly pay for all employees: {allAvgWeeklyPay.ToString("0.0")}");
+            Console.WriteLine($"The average weekly pay for all employees: ${allAvgWeeklyPay.ToString("0.0")}");
 
             //Tracker of who the highest and lowest pay is and its value
             double HighestWeeklyPay = 0.0;
@@ -104,7 +104,7 @@ namespace Lab2
             //Loops through each employee and checks what type of employee they are (Wage or Salary)
             for (int i = 0; i < listOfEmployees.Count; i++)
             {
-                if(listOfEmployees[i] is Wage )
+                if (listOfEmployees[i] is Wage)
                 {
                     if (listOfEmployees[i].GetPay() > HighestWeeklyPay)
                     {
@@ -112,15 +112,15 @@ namespace Lab2
                         nameOfHighestWeeklyPay = listOfEmployees[i].name;
                     }
                 }
-                  
-                if ( LowestSalary == 0)
+
+                if (LowestSalary == 0 && listOfEmployees[i] is Salaried)
                 {
-                    LowestSalary = HighestWeeklyPay;
+                    LowestSalary = listOfEmployees[i].GetPay();
                 }
 
-                if (listOfEmployees[i] is Salaried )
+                if (listOfEmployees[i] is Salaried)
                 {
-                    if (listOfEmployees[i].GetPay() < LowestSalary)
+                    if (listOfEmployees[i].GetPay() <=LowestSalary)
                     {
                         LowestSalary = listOfEmployees[i].GetPay();
                         nameOfLowestSalary = listOfEmployees[i].name;
