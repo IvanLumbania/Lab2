@@ -16,7 +16,7 @@ namespace Lab2
         {
             List<Employee> listOfEmployees = new List<Employee>();
 
-            using (StreamReader readerFile = new StreamReader("employees.txt"))
+            using (StreamReader readerFile = new StreamReader("C:\\Users\\ivanl\\source\\repos\\Lab2\\Lab2\\employees.txt"))
             {
                 string readerLine;
 
